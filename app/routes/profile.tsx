@@ -1,4 +1,5 @@
 import { NavLink, Outlet } from 'react-router';
+import { Table, TvMinimalPlay, ContactRound } from 'lucide-react';
 
 export default function ProfileLayout() {
   const activeLinkStyle = {
@@ -14,14 +15,21 @@ export default function ProfileLayout() {
           className="flex-1 text-center p-4"
           style={({ isActive }) => (isActive ? activeLinkStyle : undefined)}
         >
-          Posts
+          <Table className="inline-block" />
         </NavLink>
         <NavLink
           to="/profile/reels/grid"
           className="flex-1 text-center p-4"
           style={({ isActive }) => (isActive ? activeLinkStyle : undefined)}
         >
-          Reels
+          <TvMinimalPlay className="inline-block" />
+        </NavLink>
+        <NavLink
+          to="/profile/tagged/grid"
+          className="flex-1 text-center p-4"
+          style={({ isActive }) => (isActive ? activeLinkStyle : undefined)}
+        >
+          <ContactRound className="inline-block" />
         </NavLink>
       </div>
       <main>
