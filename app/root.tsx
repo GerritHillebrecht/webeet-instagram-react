@@ -8,6 +8,7 @@ import {
   useRouteError,
 } from 'react-router';
 import stylesheet from './app.css?url';
+
 import { Header } from './components/Header';
 import { BottomNav } from './components/BottomNav';
 
@@ -37,7 +38,7 @@ export default function App() {
   return (
     <>
       <Header />
-      <main className="container mx-auto p-4">
+      <main className="container mx-auto">
         <Outlet />
       </main>
       <BottomNav />
