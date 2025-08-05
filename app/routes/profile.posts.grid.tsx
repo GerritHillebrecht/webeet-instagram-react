@@ -1,7 +1,7 @@
 import { useLoaderData } from 'react-router';
-import { api } from '~/services/api';
+import { PostPreviewCard } from '~/components/PostPreviewCard';
 import { postsSchema, type Post } from '~/schemas/post.schema';
-import { PostCard } from '~/components/PostCard';
+import { api } from '~/services/api';
 
 export async function loader() {
   try {
@@ -16,9 +16,9 @@ export async function loader() {
 export default function PostsGrid() {
   const posts = useLoaderData() as Post[];
   return (
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+    <div className="grid grid-cols-3 gap-1">
       {posts.map((post) => (
-        <PostCard key={post.id} post={post} />
+        <PostPreviewCard key={post.id} post={post} />
       ))}
     </div>
   );
