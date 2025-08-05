@@ -1,5 +1,6 @@
 import { NavLink, Outlet } from 'react-router';
 import { Table, TvMinimalPlay, ContactRound } from 'lucide-react';
+import { ProfileHeader } from '~/components/ProfileHeader';
 
 export default function ProfileLayout() {
   const activeLinkStyle = {
@@ -9,28 +10,35 @@ export default function ProfileLayout() {
 
   return (
     <div>
-      <div className="flex justify-center items-center border-b mb-4">
-        <NavLink
-          to="/profile/posts/grid"
-          className="flex-1 text-center p-4"
-          style={({ isActive }) => (isActive ? activeLinkStyle : undefined)}
-        >
-          <Table className="inline-block" />
-        </NavLink>
-        <NavLink
-          to="/profile/reels/grid"
-          className="flex-1 text-center p-4"
-          style={({ isActive }) => (isActive ? activeLinkStyle : undefined)}
-        >
-          <TvMinimalPlay className="inline-block" />
-        </NavLink>
-        <NavLink
-          to="/profile/tagged/grid"
-          className="flex-1 text-center p-4"
-          style={({ isActive }) => (isActive ? activeLinkStyle : undefined)}
-        >
-          <ContactRound className="inline-block" />
-        </NavLink>
+      <ProfileHeader />
+      <div className="flex justify-center items-center mb-1 pb-3">
+        <div className="flex-1 text-center">
+          <NavLink
+            to="/profile/posts/grid"
+            className="py-3 px-6"
+            style={({ isActive }) => (isActive ? activeLinkStyle : undefined)}
+          >
+            <Table className="inline-block" />
+          </NavLink>
+        </div>
+        <div className="flex-1 text-center">
+          <NavLink
+            to="/profile/reels/grid"
+            className="py-4 px-6"
+            style={({ isActive }) => (isActive ? activeLinkStyle : undefined)}
+          >
+            <TvMinimalPlay className="inline-block" />
+          </NavLink>
+        </div>
+        <div className="flex-1 text-center">
+          <NavLink
+            to="/profile/tagged/grid"
+            className="py-4 px-6"
+            style={({ isActive }) => (isActive ? activeLinkStyle : undefined)}
+          >
+            <ContactRound className="inline-block" />
+          </NavLink>
+        </div>
       </div>
       <main>
         <Outlet />
