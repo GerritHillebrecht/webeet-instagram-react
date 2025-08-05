@@ -9,7 +9,7 @@ import { Link } from 'react-router';
 
 export function BottomNav() {
   return (
-    <footer className="fixed bottom-0 left-0 z-50 w-full h-16 bg-white border-t">
+    <footer className="fixed bottom-0 left-0 z-50 w-full h-16 bg-white border-t border-t-gray-100 ">
       <div className="grid h-full max-w-lg grid-cols-5 mx-auto font-medium">
         <Link
           to="/home"
