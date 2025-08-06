@@ -58,7 +58,7 @@ interface InstagramCardProps {
 }
 
 export default function PostCard({
-  username = 'username',
+  username = 'Gerrit Hillebrecht',
   userAvatar,
   userAvatarFallback,
   isVerified = false,
