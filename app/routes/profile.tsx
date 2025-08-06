@@ -1,8 +1,22 @@
-import { NavLink, Outlet } from 'react-router';
+import { NavLink, Outlet, useLoaderData } from 'react-router';
 import { Table, TvMinimalPlay, ContactRound } from 'lucide-react';
 import { ProfileHeader } from '~/components/ProfileHeader';
+import { api } from '~/services/api';
+import { storiesSchema, type Story } from '~/schemas/story.schema';
+
+export async function loader() {
+  try {
+    const response = await api.get('/highlights/1');
+    return storiesSchema.parse(response.data);
+  } catch (error) {
+    console.error('Failed to load reels:', error);
+    throw new Response('Could not load reels.', { status: 500 });
+  }
+}
 
 export default function ProfileLayout() {
+  const highlights = useLoaderData() as Story[]; // Adjust type as needed
+
   const activeLinkStyle = {
     borderBottom: '2px solid black',
     fontWeight: 'bold',
@@ -10,7 +24,7 @@ export default function ProfileLayout() {
 
   return (
     <div>
-      <ProfileHeader />
+      <ProfileHeader highlights={highlights} />
       <div className="flex justify-center items-center mb-1 pb-3">
         <div className="flex-1 text-center">
           <NavLink
