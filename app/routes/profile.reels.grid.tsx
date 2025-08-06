@@ -15,6 +15,13 @@ export async function loader() {
 
 export default function ReelsGrid() {
   const reels = useLoaderData() as Reel[];
+
+  console.log('Reels data:', reels);
+
+  if (!reels) {
+    return <div>Loading...</div>;
+  }
+
   return (
     <div className="grid grid-cols-2 md:grid-cols-4 gap-1">
       {reels.map((reel) => (
