@@ -1,5 +1,5 @@
 import { useLoaderData } from 'react-router';
-import { PostPreviewCard } from '~/components/PostPreviewCard';
+import { PostGridCard } from '~/components/PostGridCard';
 import { postsSchema, type Post } from '~/schemas/post.schema';
 import { api } from '~/services/api';
 
@@ -15,10 +15,15 @@ export async function loader() {
 
 export default function PostsGrid() {
   const posts = useLoaderData() as Post[];
+
+  if (!posts) {
+    return <div>Loading...</div>;
+  }
+
   return (
     <div className="grid grid-cols-3 gap-1">
       {posts.map((post) => (
-        <PostPreviewCard key={post.id} post={post} />
+        <PostGridCard key={post.id} post={post} />
       ))}
     </div>
   );
