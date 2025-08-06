@@ -33,7 +33,7 @@ export function BottomNav() {
           <TvMinimalPlay className="inline-block" />
         </Link>
         <Link
-          to="/profile"
+          to="/profile/posts/grid"
           className="inline-flex flex-col items-center justify-center px-5"
         >
           <CircleUserRound className="inline-block" />
