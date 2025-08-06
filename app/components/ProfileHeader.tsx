@@ -1,10 +1,12 @@
+import type { Story } from '~/schemas/story.schema';
+import { Stories } from './Stories';
 import { Avatar, AvatarFallback, AvatarImage } from './ui/Avatar';
 import { Button } from './ui/Button';
 
-export function ProfileHeader() {
+export function ProfileHeader({ highlights }: { highlights: Story[] }) {
   return (
-    <div className="px-4">
-      <div className="grid grid-cols-[max-content_auto] gap-5 lg:gap-8 py-4">
+    <div className="">
+      <div className="grid grid-cols-[max-content_auto] gap-5 lg:gap-8 py-4 px-4">
         <Avatar className="w-20 h-20 lg:w-32 lg:h-32">
           <AvatarImage
             className="object-cover object-center"
@@ -32,25 +34,14 @@ export function ProfileHeader() {
           </div>
         </div>
       </div>
-      <div className="flex items-center gap-x-2 mb-2 lg:mb-0 mt-2">
+      <div className="flex items-center gap-x-2 mb-2 lg:mb-0 mt-2 px-4">
         Frontend Developer
       </div>
-      <div className="grid grid-cols-2 items-center gap-x-2 mb-2 lg:mb-0">
-        <Button >Follow</Button>
-        <Button>Message</Button>
+      <div className="grid grid-cols-2 items-center gap-x-2 mb-2 lg:mb-0 px-4">
+        <Button variant="secondary">Follow</Button>
+        <Button variant="secondary">Message</Button>
       </div>
-      <div className="flex items-center flex-row my-4">
-        <div className="flex items-center justify-center flex-col gap-1">
-          <Avatar className="w-16 h-16">
-            <AvatarImage
-              className="object-cover object-center"
-              src="https://images.unsplash.com/photo-1754152728457-902f155ebcae?q=80&w=1766&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-            />
-            <AvatarFallback>GH</AvatarFallback>
-          </Avatar>
-          <p className="text-center text-sm">Real Estate</p>
-        </div>
-      </div>
+      <Stories className="py-4" stories={highlights} allSeen={true} />
     </div>
   );
 }
