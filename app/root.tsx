@@ -38,7 +38,7 @@ export default function App() {
   return (
     <>
       <Header />
-      <main className="container mx-auto">
+      <main className="container mx-auto pb-16">
         <Outlet />
       </main>
       <BottomNav />
