@@ -1,5 +1,15 @@
 import { z } from 'zod';
 
+export const createPostInputSchema = z
+  .object({
+    caption: z.string().min(1, 'Caption is required.').max(255).optional(),
+    image: z.instanceof(File).optional(), // For file input
+  })
+  .refine((data) => data.caption || data.image, {
+    message: 'Either an image or a caption is required.',
+    path: ['image'], // Attach error to image field if both are missing
+  });
+
 // First, we declare a zod schema
 export const postSchema = z.object({
   id: z.number(),
@@ -12,3 +22,4 @@ export const postsSchema = z.array(postSchema);
 
 // Then, we infer the TypeScript type from the Zod schema.
 export type Post = z.infer<typeof postSchema>;
+export type CreatePostInput = z.infer<typeof createPostInputSchema>;
