@@ -21,7 +21,7 @@ export function BottomNav() {
           <Search className="inline-block" />
         </div>
         <Link
-          to="/home"
+          to="/create"
           className="inline-flex flex-col items-center justify-center px-5"
         >
           <SquarePlus className="inline-block" />
